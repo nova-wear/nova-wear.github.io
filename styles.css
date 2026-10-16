@@ -314,7 +314,7 @@ h2[tabindex="-1"]:focus { outline: none; }
 .final { background: var(--bg-alt); color: var(--ink); }
 .final::before { display: none; }
 .final p { color: var(--muted); }
-.final :focus-visible { outline-color: var(--accent); }
+.final :focus-visible { outline-color: var(--ink); }
 .footer { border-top: 0; }
 .pd__add { gap: 10px; }
 .pd__sum { opacity: .85; font-variant-numeric: tabular-nums; white-space: nowrap; }

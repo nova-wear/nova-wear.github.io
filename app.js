@@ -373,7 +373,7 @@
   // Замовлення йде менеджеру через Worker. Якщо не вдалося — кошик лишається, можна спробувати ще раз.
   function sendOrder(f, msg) {
     var btn = f.querySelector('button[type=submit]');
-    if (!CONFIG.orderEndpoint) { $('#send-err').hidden = false; $('#send-err').focus(); return; }
+    if (!CONFIG.orderEndpoint) { $('#send-err').hidden = false; $('#send-err').focus({ preventScroll: true }); btn.scrollIntoView({ block: 'end' }); return; }
     btn.disabled = true; btn.textContent = 'Надсилаємо…';
     fetch(CONFIG.orderEndpoint, {
       method: 'POST',
@@ -388,7 +388,8 @@
     }).catch(function () {
       var err = $('#send-err');
       err.hidden = false;
-      err.focus();
+      err.focus({ preventScroll: true });
+      btn.scrollIntoView({ block: 'end' });
     }).then(function () { btn.disabled = false; btn.textContent = 'Підтвердити замовлення'; });
   }
 
