@@ -5,7 +5,9 @@
 
   /* ---------- Налаштування магазину ---------- */
   var CONFIG = {
-    orderEndpoint: '', // https://nova-orders.<субдомен>.workers.dev/order — див. worker/README.md
+    // Замовлення приходять листом на цю пошту через formsubmit.co (без сервера).
+    // Після першого замовлення FormSubmit надішле лист «Activate form» — натисніть кнопку в ньому один раз.
+    orderEmail: '',
     shipDays: '1–3',
     currency: '₴'
   };
@@ -373,14 +375,16 @@
   // Замовлення йде менеджеру через Worker. Якщо не вдалося — кошик лишається, можна спробувати ще раз.
   function sendOrder(f, msg) {
     var btn = f.querySelector('button[type=submit]');
-    if (!CONFIG.orderEndpoint) { $('#send-err').hidden = false; $('#send-err').focus({ preventScroll: true }); btn.scrollIntoView({ block: 'end' }); return; }
+    if (!CONFIG.orderEmail) { $('#send-err').hidden = false; $('#send-err').focus({ preventScroll: true }); btn.scrollIntoView({ block: 'end' }); return; }
     btn.disabled = true; btn.textContent = 'Надсилаємо…';
-    fetch(CONFIG.orderEndpoint, {
+    if (f.elements.website && f.elements.website.value) { showStep('sent'); return; } // honeypot: поле бачать лише боти
+    fetch('https://formsubmit.co/ajax/' + encodeURIComponent(CONFIG.orderEmail), {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text: msg, name: f.elements.name.value, phone: f.elements.phone.value, website: f.elements.website ? f.elements.website.value : '' })
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ _subject: 'Нове замовлення Nova — ' + f.elements.name.value.trim(), _template: 'box', _captcha: 'false',
+        'Імʼя': f.elements.name.value.trim(), 'Телефон': f.elements.phone.value.trim(), 'Замовлення': msg })
     }).then(function (r) { return r.json(); }).then(function (res) {
-      if (!res || !res.ok) throw new Error('order');
+      if (!res || !(res.success === true || res.success === 'true')) throw new Error('order');
       cart = []; saveCart();
       f.reset();
       showStep('sent');
