@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nova — базовий однотонний одяг без принтів</title>
+<meta name="description" content="Футболки, худі, світшоти, кепки й шопери без написів, у багатьох кольорах. Розміри XS–XXL, доставка Новою Поштою, обмін і повернення протягом 14 днів.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="garments.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Перейти до вмісту</a>
+
+<header class="header">
+  <div class="wrap header__in">
+    <a class="logo" href="#top" aria-label="Nova — на початок"><span class="logo__mark" aria-hidden="true"></span><span translate="no">Nova</span></a>
+    <nav class="nav" id="nav" aria-label="Головне меню">
+      <a href="#catalog">Каталог</a>
+      <a href="#why">Переваги</a>
+      <a href="#delivery">Доставка й оплата</a>
+      <a href="#faq">Питання</a>
+    </nav>
+    <div class="header__actions">
+      <button type="button" class="icon-btn" data-open-cart aria-label="Кошик">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 01-2 1.8H8.2a2 2 0 01-2-1.8L5 8zM9 10V7a3 3 0 016 0v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="cart-count" hidden>0</span>
+      </button>
+      <button type="button" class="icon-btn menu-btn" id="menu-btn" aria-label="Меню" aria-expanded="false" aria-controls="nav">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path class="i-open" d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path class="i-close" d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero2" id="top" aria-labelledby="hero-h">
+  <div class="wrap hero2__in">
+    <div class="hero2__text">
+      <h1 id="hero-h">Базовий одяг без зайвого</h1>
+      <p class="lead">Однотонні футболки, худі та світшоти з продуманим кроєм. Оберіть колір і розмір, а ми відправимо замовлення за <span data-ship>1–3</span> робочі дні.</p>
+      <div class="hero2__cta">
+        <a class="btn btn--primary btn--lg" href="#catalog">Перейти в каталог</a>
+        <a class="btn btn--ghost btn--lg" href="#delivery">Доставка й оплата</a>
+      </div>
+      <ul class="hero2__facts">
+        <li><b>від <span data-min-price>490 ₴</span></b><span>ціна моделей</span></li>
+        <li><b><span data-ship>1–3</span> дні</b><span>відправка</span></li>
+        <li><b>14 днів</b><span>обмін і повернення</span></li>
+      </ul>
+    </div>
+    <div class="htiles" id="hero-tiles"></div>
+  </div>
+</section>
+
+<section class="section" id="catalog" aria-labelledby="catalog-h">
+  <div class="wrap">
+    <div class="section__head section__head--left">
+      <h2 id="catalog-h">Каталог</h2>
+      <p>Оберіть модель, колір і розмір. Усі речі однотонні, без написів і принтів.</p>
+    </div>
+    <div class="filters" id="cat-filter" role="group" aria-label="Категорії"></div>
+    <ul class="catalog" id="catalog-grid"></ul>
+  </div>
+</section>
+
+<section class="section section--alt" id="why" aria-labelledby="why-h">
+  <div class="wrap">
+    <div class="section__head section__head--left"><h2 id="why-h">Чому <span translate="no">Nova</span></h2></div>
+    <ul class="benefits">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3l-5 3 2 5 3-1v11h8V10l3 1 2-5-5-3c-1 2-2.5 3-4 3S9 5 8 3z"/></svg><h3>Чисті речі без написів</h3><p>Жодних принтів і логотипів, тож речі легко поєднувати між собою.</p></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20L20 4M7 4h13v13"/></svg><h3>Продуманий крій</h3><p>Оверсайз і класична посадка, щоб ви обрали силует під себе.</p></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h18v8H3zM7 8v3M11 8v4M15 8v3M19 8v4"/></svg><h3>Розміри XS–XXL</h3><p>Широка сітка розмірів, кепки регулюються, а шопер підходить усім.</p></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1014-5.3M18 3v4h-4"/></svg><h3>Обмін і повернення 14 днів</h3><p>Якщо річ не підійшла, поверніть її неношеною з цілими бирками.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="delivery" aria-labelledby="delivery-h">
+  <div class="wrap delivery">
+    <div>
+      <h2 id="delivery-h">Доставка й оплата</h2>
+      <ul class="perks">
+        <li><strong>Доставка Новою Поштою</strong>По всій Україні, за тарифами перевізника.</li>
+        <li><strong>Відправка за <span data-ship>1–3</span> робочі дні</strong>Після того як менеджер підтвердить замовлення.</li>
+        <li><strong>Оплата зручним способом</strong>Накладеним платежем при отриманні або на карту.</li>
+        <li><strong>Обмін і повернення</strong>Протягом 14 днів, якщо річ не носили й бирки цілі.</li>
+      </ul>
+      <a class="btn btn--primary btn--lg" href="#catalog">Перейти в каталог</a>
+    </div>
+    <ol class="steps" aria-label="Як замовити">
+      <li><span aria-hidden="true">1</span><div><b>Оберіть модель</b><p>Колір, розмір і кількість — у картці товару.</p></div></li>
+      <li><span aria-hidden="true">2</span><div><b>Оформіть замовлення</b><p>Імʼя, телефон і відділення Нової Пошти.</p></div></li>
+      <li><span aria-hidden="true">3</span><div><b>Підтвердження</b><p>Менеджер зателефонує або напише, щоб усе звірити.</p></div></li>
+      <li><span aria-hidden="true">4</span><div><b>Відправка</b><p>За <span data-ship>1–3</span> робочі дні — і посилка вже їде до вас.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section--alt" id="faq" aria-labelledby="faq-h">
+  <div class="wrap wrap--narrow">
+    <div class="section__head"><h2 id="faq-h">Питання й відповіді</h2></div>
+    <div class="faq">
+      <details id="faq-size"><summary>Як обрати розмір?</summary>
+        <p>Оверсайз-моделі сідають вільно, базові — класично. Виміряйте річ, яку часто носите, і порівняйте з таблицею. Якщо сумніваєтеся, залиште коментар у замовленні, і менеджер підкаже розмір.</p>
+        <div class="table-wrap" role="region" aria-label="Таблиця розмірів" tabindex="0"><table class="sizes">
+          <caption>Ширина виробу під пахвами, см</caption>
+          <thead><tr><th scope="col">Модель</th><th scope="col">XS</th><th scope="col">S</th><th scope="col">M</th><th scope="col">L</th><th scope="col">XL</th><th scope="col">XXL</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Футболка базова</th><td>48</td><td>51</td><td>54</td><td>57</td><td>60</td><td>63</td></tr>
+            <tr><th scope="row">Футболка оверсайз</th><td>54</td><td>57</td><td>60</td><td>63</td><td>66</td><td>69</td></tr>
+            <tr><th scope="row">Світшот</th><td>52</td><td>55</td><td>58</td><td>61</td><td>64</td><td>67</td></tr>
+            <tr><th scope="row">Худі</th><td>56</td><td>59</td><td>62</td><td>65</td><td>68</td><td>71</td></tr>
+          </tbody>
+        </table></div>
+      </details>
+      <details id="faq-return"><summary>Чи можна обміняти або повернути річ?</summary><p>Так, протягом 14 днів, якщо річ не носили й бирки цілі. Звʼяжіться з менеджером за номером, з якого він підтверджував замовлення, — він підкаже, як оформити обмін чи повернення.</p></details>
+      <details><summary>Скільки часу займає доставка?</summary><p>Ми відправляємо замовлення Новою Поштою за <span data-ship>1–3</span> робочі дні, зазвичай посилка йде 1–3 дні. Доставку ви оплачуєте за тарифами перевізника.</p></details>
+      <details><summary>Як оплатити замовлення?</summary><p>Накладеним платежем при отриманні або на карту. Спосіб оплати ви обираєте під час оформлення, а менеджер підтверджує його разом із замовленням.</p></details>
+      <details><summary>Як доглядати за речами?</summary><p>Дотримуйтеся рекомендацій на бирці виробу. Прайте навиворіт за температури до 30–40 °C, без відбілювача, і сушіть у розправленому вигляді.</p></details>
+      <details><summary>Чи можна замовити речі для команди чи компанії?</summary><p>Так. Залиште коментар у замовленні з кількістю, моделями й розмірами, і менеджер порахує замовлення.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final" aria-labelledby="final-h">
+  <div class="wrap final__in">
+    <h2 id="final-h">Оберіть свою базу</h2>
+    <p>Додайте речі в кошик, а менеджер звʼяжеться з вами, щоб підтвердити замовлення.</p>
+    <div class="final__cta"><a class="btn btn--primary btn--lg" href="#catalog">Обрати модель</a></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__in">
+    <div>
+      <p class="logo logo--footer" translate="no">Nova</p>
+      <p>Базовий однотонний одяг без написів і принтів із доставкою по Україні.</p>
+    </div>
+    <ul class="footer__links">
+      <li><a href="#catalog">Каталог</a></li>
+      <li><a href="#faq-size">Таблиця розмірів</a></li>
+      <li><a href="#delivery">Доставка й оплата</a></li>
+      <li><a href="#faq-return">Обмін і повернення</a></li>
+    </ul>
+    <p class="footer__legal">© <span id="year">2026</span> <span translate="no">Nova</span></p>
+  </div>
+</footer>
+
+<div class="modal" id="product" hidden role="dialog" aria-modal="true" aria-labelledby="pd-name">
+  <div class="modal__panel">
+    <button type="button" class="icon-btn modal__close" id="pd-close" aria-label="Закрити">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <div class="pd__gallery">
+      <div class="garment pd__media" id="pd-media"></div>
+      <div class="pd__views" id="pd-views" role="group" aria-label="Ракурс"></div>
+    </div>
+    <div class="pd__info">
+      <h2 id="pd-name"></h2>
+      <p class="pd__price" id="pd-price"></p>
+      <p class="pd__desc" id="pd-desc"></p>
+      <div class="field">
+        <p class="field__label" id="pd-color-l">Колір: <b id="pd-color-name"></b></p>
+        <div class="swatches" id="pd-colors" role="radiogroup" aria-labelledby="pd-color-l"></div>
+      </div>
+      <div class="field" id="pd-size-field">
+        <div class="pd__size-head"><p class="field__label" id="pd-size-l">Розмір</p><a href="#faq-size" class="pd__link" id="pd-sizes-link">Таблиця розмірів</a></div>
+        <div class="chips chips--size" id="pd-sizes" role="radiogroup" aria-labelledby="pd-size-l" aria-describedby="pd-size-err"></div>
+        <p class="field__msg" id="pd-size-err" role="alert" hidden>Оберіть розмір</p>
+      </div>
+      <div class="pd__buy">
+        <div class="qty" role="group" aria-label="Кількість">
+          <button type="button" data-pqty="-1" aria-label="Менше">−</button><span id="pd-qty-n" aria-live="polite">1</span><button type="button" data-pqty="1" aria-label="Більше">+</button>
+        </div>
+        <button type="button" class="btn btn--primary pd__add" id="pd-add"><span>Додати в кошик</span><span class="pd__sum" id="pd-total"></span></button>
+      </div>
+      <ul class="pd__feats" id="pd-feats"></ul>
+      <p class="hint">Відправка за <span data-ship>1–3</span> робочі дні · обмін і повернення 14 днів</p>
+    </div>
+  </div>
+</div>
+
+<div class="drawer" id="cart" hidden role="dialog" aria-modal="true" aria-labelledby="cart-title">
+  <div class="drawer__panel">
+    <div class="drawer__head">
+      <h2 id="cart-title" tabindex="-1">Кошик</h2>
+      <button type="button" class="icon-btn" id="cart-close" aria-label="Закрити кошик">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div class="drawer__body" data-step="cart">
+      <div class="cart-empty" id="cart-empty">
+        <p>Кошик порожній. Оберіть модель у каталозі.</p>
+        <a class="btn btn--primary" href="#catalog" data-close-cart>До каталогу</a>
+      </div>
+      <ul class="cart-list" id="cart-list"></ul>
+      <div class="cart-foot" id="cart-foot" hidden>
+        <div class="cart-total"><span>Разом</span><strong id="cart-total"></strong></div>
+        <p class="hint">Доставка — за тарифами Нової Пошти.</p>
+        <button type="button" class="btn btn--primary btn--block" id="to-checkout">Оформити замовлення</button>
+      </div>
+    </div>
+
+    <form class="drawer__body checkout" id="checkout" data-step="checkout" hidden novalidate>
+      <div class="field"><label class="field__label" for="c-name">Імʼя та прізвище</label><input class="input" id="c-name" name="name" aria-describedby="c-name-err" type="text" autocomplete="name" required placeholder="Як до вас звертатися…"><span class="field__err" id="c-name-err" data-empty="Вкажіть імʼя, щоб менеджер знав, як до вас звертатися."></span></div>
+      <div class="field"><label class="field__label" for="c-phone">Телефон</label><input class="input" id="c-phone" name="phone" aria-describedby="c-phone-err" type="tel" inputmode="tel" autocomplete="tel" required placeholder="050 123 45 67…"><span class="field__err" id="c-phone-err" data-empty="Вкажіть номер телефону, напр. 050 123 45 67."></span></div>
+      <div class="field"><label class="field__label" for="c-city">Місто</label><input class="input" id="c-city" name="city" aria-describedby="c-city-err" type="text" autocomplete="address-level2" required placeholder="Київ…"><span class="field__err" id="c-city-err" data-empty="Вкажіть місто доставки."></span></div>
+      <div class="field"><label class="field__label" for="c-branch">Відділення Нової Пошти</label><input class="input" id="c-branch" name="branch" aria-describedby="c-branch-err" type="text" autocomplete="off" required placeholder="Номер або адреса відділення…"><span class="field__err" id="c-branch-err" data-empty="Вкажіть номер або адресу відділення Нової Пошти."></span></div>
+      <fieldset class="field">
+        <legend class="field__label">Оплата</legend>
+        <label class="radio"><input type="radio" name="pay" value="cod" checked><span>Накладений платіж — оплата при отриманні</span></label>
+        <label class="radio"><input type="radio" name="pay" value="card"><span>Передоплата на карту — реквізити надішле менеджер</span></label>
+      </fieldset>
+      <div class="hp" aria-hidden="true"><label for="c-website">Сайт</label><input id="c-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      <div class="field"><label class="field__label" for="c-comment">Коментар до замовлення</label><textarea class="input" id="c-comment" name="comment" rows="2" autocomplete="off" placeholder="Побажання щодо розміру, доставки тощо…"></textarea></div>
+      <div class="cart-total"><span>Разом</span><strong id="checkout-total"></strong></div>
+      <p class="send-err" id="send-err" role="alert" tabindex="-1" hidden>Не вдалося надіслати замовлення. Спробуйте ще раз: кошик збережено.</p>
+      <button type="submit" class="btn btn--primary btn--block">Підтвердити замовлення</button>
+      <button type="button" class="link-btn" id="back-to-cart">← Назад до кошика</button>
+    </form>
+
+    <div class="drawer__body" data-step="sent" hidden>
+      <p class="done__title">Дякуємо, замовлення прийнято.</p>
+      <p>Менеджер зателефонує або напише вам, щоб його підтвердити.</p>
+      <button type="button" class="btn btn--ghost btn--block" data-close-cart>Повернутися до сайту</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><span id="toast-text"></span><button type="button" class="toast__undo" id="toast-undo" hidden>Повернути</button></div>
+</body>
+</html>
