@@ -1,5 +1,4 @@
 """Дочищає фото виробів у images/g після build-garments.py:
-- фон, звʼязаний з краєм кадру, вирівнюється до рівного STUDIO (прибирає теплі/світлі плями й ореоли);
 - у шопера заливається фоном просвіт між ручками (у мокапі там лишилась сіра пляма).
 Запуск: python3 tools/clean-photos.py"""
 import glob
@@ -43,12 +42,6 @@ def clean(path):
     a = np.asarray(Image.open(path).convert('RGB')).astype(float)
     h, w, _ = a.shape
     sat = a.max(axis=2) - a.min(axis=2)
-    lum = a.mean(axis=2)
-    # Світлий нейтральний фон (включно з ореолами світліше за STUDIO) від краю кадру.
-    bgish = (sat < 10) & (lum > STUDIO - 9)
-    border = [(y, x) for y in (0, h - 1) for x in range(w)] + [(y, x) for x in (0, w - 1) for y in range(h)]
-    bg = flood(bgish, border)
-    soften(a, bg)
     if os.path.basename(path).startswith('tote-'):
         # Просвіт між ручками: над корпусом сумки, по центру.
         rows = np.where((np.abs(a - STUDIO).max(axis=2) > 14).sum(axis=1) > w * 0.35)[0]
@@ -80,7 +73,7 @@ def light_colors():
 
 if __name__ == '__main__':
     light = light_colors()
-    for p in sorted(glob.glob(os.path.join(ROOT, '*.webp'))):
+    for p in sorted(glob.glob(os.path.join(ROOT, 'tote-*.webp'))):
         if not any(os.path.basename(p).startswith(k) for k in light):
             clean(p)
     print('ok')
