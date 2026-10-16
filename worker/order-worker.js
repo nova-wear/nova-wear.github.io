@@ -1,11 +1,11 @@
-/* Cloudflare Worker «На подарунок»: приймає замовлення з сайту й пересилає їх ботом у Telegram.
+/* Cloudflare Worker «Nova»: приймає замовлення з сайту й пересилає їх ботом у Telegram.
    Також переправляє повідомлення покупців боту менеджеру й відповіді менеджера назад.
 
    Секрети (Cloudflare → Worker → Settings → Variables and Secrets, тип «Secret»):
      BOT_TOKEN — токен від @BotFather. Ніколи не кладіть його в код сайту чи в репозиторій.
      CHAT_ID   — ваш chat id (див. worker/README.md).
    Змінна (тип «Text», необовʼязково):
-     ALLOWED_ORIGIN — https://napodarunok.github.io
+     ALLOWED_ORIGIN — адреса сайту, напр. https://<організація>.github.io
 
    Маршрути:
      POST /order    — замовлення з сайту (JSON { text, name, phone, website })
@@ -20,7 +20,7 @@ const hits = new Map();          // памʼять одного екземпля
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const origin = env.ALLOWED_ORIGIN || 'https://napodarunok.github.io';
+    const origin = env.ALLOWED_ORIGIN || '';
     const cors = {
       'Access-Control-Allow-Origin': origin,
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -45,7 +45,7 @@ export default {
       return new Response('ok');
     }
 
-    return new Response('На подарунок — order worker', { status: 200 });
+    return new Response('Nova — order worker', { status: 200 });
   }
 };
 
@@ -89,7 +89,7 @@ async function handleUpdate(update, env) {
   }
 
   if (m.text && m.text.startsWith('/start')) {
-    await tg(env, 'sendMessage', { chat_id: m.chat.id, text: 'Вітаємо в «На подарунок»! Напишіть ваше питання або номер замовлення — менеджер відповість тут.' });
+    await tg(env, 'sendMessage', { chat_id: m.chat.id, text: 'Вітаємо в Nova! Напишіть ваше питання або номер замовлення — менеджер відповість тут.' });
     return;
   }
   const who = [m.from && m.from.first_name, m.from && m.from.last_name].filter(Boolean).join(' ') || 'Покупець';

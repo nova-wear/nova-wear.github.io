@@ -5,7 +5,7 @@
 
   /* ---------- Налаштування магазину ---------- */
   var CONFIG = {
-    orderEndpoint: 'https://napodarunok-orders.stvory.workers.dev/order', // Worker: worker/order-worker.js
+    orderEndpoint: '', // https://nova-orders.<субдомен>.workers.dev/order — див. worker/README.md
     shipDays: '1–3',
     currency: '₴'
   };
@@ -373,6 +373,7 @@
   // Замовлення йде менеджеру через Worker. Якщо не вдалося — кошик лишається, можна спробувати ще раз.
   function sendOrder(f, msg) {
     var btn = f.querySelector('button[type=submit]');
+    if (!CONFIG.orderEndpoint) { $('#send-err').hidden = false; $('#send-err').focus(); return; }
     btn.disabled = true; btn.textContent = 'Надсилаємо…';
     fetch(CONFIG.orderEndpoint, {
       method: 'POST',

@@ -1,4 +1,4 @@
-"""Збирає garments.js з мокапів Loomiq.
+"""Збирає garments.js з мокапів виробника.
 
 Запуск: python3 tools/build-garments.py <шлях до Vyshyvka/images> <шлях до Vyshyvka/catalog-base.js>
 Кладе оброблені фото в images/g/ (білий фон, ширина ≤ 720px) і пише garments.js:
@@ -17,7 +17,7 @@ os.makedirs(DST, exist_ok=True)
 VIEWS = {'teeover': ['front', 'back'], 'tee': ['front', 'back'], 'hoodieover': ['front', 'back'],
          'hoodieoverfleece': ['front', 'back'], 'hoodie': ['front', 'back'], 'hoodiezip': ['front', 'back'],
          'sweat': ['front', 'back'], 'cap': ['front', 'left'], 'tote': ['front']}
-# У Loomiq для цих позицій «зад» — копія «переду» або інша модель, тому їх не беремо.
+# У мокапах виробника для цих позицій «зад» — копія «переду» або інша модель, тому їх не беремо.
 VIEWS['hoodiezip'] = ['front']
 STUDIO = 243
 SKIP = {('tee', 'orange'), ('tee', 'plum'), ('tee', 'wine'), ('tee', 'yellow'), ('hoodie', 'chocolate')}
